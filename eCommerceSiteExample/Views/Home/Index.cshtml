@@ -2,7 +2,81 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="display-1">Welcome to the Game Store!</h1>
+<p class="lead"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Nullam vitae arcu sit amet ex semper fermentum et eget felis. Phasellus euismod, 
+    turpis at accumsan tristique, ex arcu scelerisque erat, vitae maximus enim sem sit amet mauris. 
+    Integer tincidunt sit amet arcu vitae ullamcorper. Vivamus sed sem in nulla porta pharetra. 
+</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Product Device</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Region</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Game 1</td>
+                            <td>DS</td>
+                            <td>$59.99</td>
+                            <td>Japan</td>
+                        </tr>
+                        <tr>
+                            <td>Game 2</td>
+                            <td>PS5</td>
+                            <td>$59.99</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div>
+                <h3>Quick Question FAQ</h3>
+                <!--id in main accordion div (with data-bs-parent in following divs) is necessary to have auto hiding-->
+                <div class="accordion accordion-flush" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Region?
+                      </button>
+                    </h2>
+                    <!-- Removed show from end of class to keep accordion from opening on start up-->
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" 
+                        data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        Although most games are playable regardless of the region the game disk is from. Certain games/consoles
+                        are regioned locked. If applicable the region version of the game will be noted within the table.
+                        <strong>This does not determine the disply language. Please refer to the specific product page for
+                        a list of supported languages.</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Accordion Item #2
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                          Nullam vitae arcu sit amet ex semper fermentum et eget felis. Phasellus euismod, 
+                          turpis at accumsan tristique.
+                      </div>
+                   </div>
+            </div>
+        </div>
+    </div>
 </div>

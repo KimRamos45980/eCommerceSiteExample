@@ -20,10 +20,21 @@ namespace eCommerceSiteExample.Models
         public string Title { get; set; }
 
         /// <summary>
+        /// Device listed game can be played on
+        /// </summary>
+        [Required]
+        public string Device { get; set; }
+
+        /// <summary>
         /// The sales price of the game
         /// </summary>
         [Range (0, 1000)]
         public double Price { get; set; }
+
+        /// <summary>
+        /// The game's distributed region for device playability
+        /// </summary>
+        public string? Region { get; set; }
 
         // Todo: Add rating
 

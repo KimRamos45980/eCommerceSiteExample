@@ -64,6 +64,7 @@ namespace eCommerceSiteExample.Controllers
                 _context.Games.Update(gameModel);
                 await _context.SaveChangesAsync();
 
+                TempData["Message"] = $"{gameModel.Title} was updated successfully!";
                 return RedirectToAction("Index");
             }
 

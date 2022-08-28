@@ -14,13 +14,25 @@ namespace eCommerceSiteExample.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            //List<Game> games = _context.Games.ToList();
-            List<Game> games = await (from game in _context.Games
-                                      select game).ToListAsync();
+            const int NumGamesToDisplayPerPage = 3;
+            const int PageOffset = 1; // Page offset for num of game displayed on current page
 
-            return View(games);
+            int currPage = id ?? 1; // Set currPage to id if it has a value, otherwise use 1
+
+            int totalNumOfProducts = await _context.Games.CountAsync();
+            double MaxNumPages = Math.Ceiling((double)totalNumOfProducts / NumGamesToDisplayPerPage);
+            int lastPage = Convert.ToInt32(MaxNumPages); // Round pages up to next whole number
+
+            List<Game> games = await (from game in _context.Games
+                                      select game)
+                                      .Skip(NumGamesToDisplayPerPage * (currPage - PageOffset))
+                                      .Take(NumGamesToDisplayPerPage)
+                                      .ToListAsync();
+
+            GameCatalogViewModel catalogModel = new(games, lastPage, currPage);
+            return View(catalogModel);
         }
 
         [HttpGet]

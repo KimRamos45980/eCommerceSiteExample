@@ -24,3 +24,4 @@ Prerequisites:
 Getting Started with EF Core: https://docs.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=visual-studio  
 Using EF Core with ASP.NET Tutorial: https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-6.0  
 Configuing ASP.NET Core: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-6.0
+Managing State: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/app-state?view=aspnetcore-6.0

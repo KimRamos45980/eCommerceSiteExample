@@ -39,4 +39,21 @@ namespace eCommerceSiteExample.Models
         // Todo: Add rating
 
     }
+
+    /// <summary>
+    /// A single video game that has been added to the users
+    /// shopping cart cookie
+    /// </summary>
+    public class CartGameViewModel
+    {
+        public int GameId { get; set; }
+
+        public string Title { get; set; }
+
+        public string Device { get; set; }
+
+        public double Price { get; set; }
+
+        public string? Region { get; set; }
+    }
 }

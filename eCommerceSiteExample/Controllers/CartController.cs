@@ -37,17 +37,20 @@ namespace eCommerceSiteExample.Controllers
 
             List<CartGameViewModel> cartGames = getExistingCartData();
             cartGames.Add(cartGame);
+            WriteShoppingCartCookie(cartGames);
 
+            TempData["Message"] = "Item added to cart";
+            return RedirectToAction("Index", "Games");
+        }
+
+        private void WriteShoppingCartCookie(List<CartGameViewModel> cartGames)
+        {
             string cookieData = JsonConvert.SerializeObject(cartGames);
 
             HttpContext.Response.Cookies.Append(Cart, cookieData, new CookieOptions()
             {
                 Expires = DateTimeOffset.Now.AddYears(1)
             });
-
-            // Todo: Add item to a shopping cart cookie
-            TempData["Message"] = "Item added to cart";
-            return RedirectToAction("Index", "Games");
         }
 
         /// <summary>
@@ -65,6 +68,27 @@ namespace eCommerceSiteExample.Controllers
             }
 
             return JsonConvert.DeserializeObject<List<CartGameViewModel>>(cookie);
+        }
+
+        public IActionResult Summary()
+        {
+            // Read shopping cart data and convert to list of view model
+            List<CartGameViewModel> cartGames = getExistingCartData();
+            return View(cartGames);
+        }
+
+        public IActionResult Remove(int id)
+        {
+            List<CartGameViewModel> cartGames = getExistingCartData();
+
+            CartGameViewModel? targetGame =
+                cartGames.FirstOrDefault(g => g.GameId == id);
+
+            cartGames.Remove(targetGame);
+
+            WriteShoppingCartCookie(cartGames);
+
+            return RedirectToAction(nameof(Summary));
         }
     }
 }
